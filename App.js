@@ -5,27 +5,24 @@
  * @format
  * @flow
  */
-
 import React from 'react';
-import {
-  SafeAreaView,
-  StyleSheet,
-  StatusBar,
-} from 'react-native';
-
-import {
-  Colors,
-} from 'react-native/Libraries/NewAppScreen';
+import {StyleSheet, StatusBar} from 'react-native';
+import {Colors} from 'react-native/Libraries/NewAppScreen';
 import Home from './components/Home';
+import LyricsScreen from './components/LyricsScreen';
+import {NavigationContainer} from '@react-navigation/native';
+import {createStackNavigator} from '@react-navigation/stack';
+const Stack = createStackNavigator();
 
 const App: () => React$Node = () => {
   return (
-    <>
+    <NavigationContainer>
       <StatusBar barStyle="dark-content" />
-      <SafeAreaView>
-        <Home />
-      </SafeAreaView>
-    </>
+      <Stack.Navigator>
+        <Stack.Screen name="mobieEffects" component={Home} />
+        <Stack.Screen name="Letra" component={LyricsScreen} />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 };
 
