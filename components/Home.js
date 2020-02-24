@@ -1,7 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import {View, Button, TextInput, Alert, ActivityIndicator} from 'react-native';
 import {useDataApi} from '../hooks/useDataApi';
-import LyricsScreen from './LyricsScreen';
 
 const Home = props => {
   const {navigation} = props;
@@ -23,8 +22,8 @@ const Home = props => {
     if (data) {
       navigation.navigate('Letra', {
         lyrics: data.lyrics,
-        artist,
-        title,
+        artist: artist,
+        title: title,
       });
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -51,6 +50,10 @@ const Home = props => {
         onChangeText={text => setTitle(text)}
       />
       <Button title={'Buscar'} onPress={() => handleSearch()} />
+      <Button
+        title={'Mis Letras'}
+        onPress={() => props.navigation.navigate('Mis Letras')}
+      />
       {isLoading && <ActivityIndicator size="large" color="#0000ff" />}
     </View>
   );
