@@ -1,6 +1,19 @@
 import React, {useState, useEffect} from 'react';
-import {View, Button, TextInput, Alert, ActivityIndicator} from 'react-native';
+import {
+  View,
+  Button,
+  TextInput,
+  Alert,
+  ActivityIndicator,
+  Text,
+  TouchableOpacity,
+} from 'react-native';
 import {useDataApi} from '../hooks/useDataApi';
+import Screens from '../styles/Screens';
+import Forms from '../styles/Forms';
+import Buttons from '../styles/Buttons';
+import Typo from '../styles/Typo';
+import Colors from '../styles/Colors';
 
 const Home = props => {
   const {navigation} = props;
@@ -38,23 +51,42 @@ const Home = props => {
   };
 
   return (
-    <View>
+    <View style={[Screens.default, Screens.HomeScreen]}>
       <TextInput
         value={artist}
-        style={{height: 40, borderColor: 'gray', borderWidth: 1}}
+        style={Forms.textInput}
         onChangeText={text => setArtist(text)}
       />
       <TextInput
         value={title}
-        style={{height: 40, borderColor: 'gray', borderWidth: 1}}
+        style={Forms.textInput}
         onChangeText={text => setTitle(text)}
       />
-      <Button title={'Buscar'} onPress={() => handleSearch()} />
-      <Button
-        title={'Mis Letras'}
-        onPress={() => props.navigation.navigate('Mis Letras')}
-      />
-      {isLoading && <ActivityIndicator size="large" color="#0000ff" />}
+      <View style={(Buttons.regular, Buttons.search)}>
+        <TouchableOpacity onPress={() => handleSearch()}>
+          <Text
+            style={[Typo.altBold, Typo.medium, Typo.centerP, {color: 'white'}]}>
+            Buscar
+          </Text>
+        </TouchableOpacity>
+      </View>
+
+      <View style={(Buttons.regular, Buttons.myLyrics)}>
+        <TouchableOpacity
+          onPress={() => props.navigation.navigate('Mis Letras')}>
+          <Text
+            style={[Typo.altBold, Typo.medium, Typo.centerP, {color: 'white'}]}>
+            Mis Letras
+          </Text>
+        </TouchableOpacity>
+      </View>
+      {isLoading && (
+        <ActivityIndicator
+          style={{margin: 20}}
+          size="large"
+          color={Colors.pale}
+        />
+      )}
     </View>
   );
 };
