@@ -6,6 +6,11 @@ import Typo from '../styles/Typo';
 import Colors from '../styles/Colors';
 import Buttons from '../styles/Buttons';
 
+/**
+ *
+ * Displays the lyrics for the found songs
+ * @author @TKY2048
+ */
 const LyricsScreen = props => {
   const {lyrics, artist, title} = props.route.params;
 

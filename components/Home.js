@@ -15,6 +15,12 @@ import Buttons from '../styles/Buttons';
 import Typo from '../styles/Typo';
 import Colors from '../styles/Colors';
 
+/**
+ *
+ * Main component mounted on app startup. Handles user input and fire requests to the API accordingly.
+ * @return {*}
+ * @author @TKY2048
+ */
 const Home = props => {
   const {navigation} = props;
 

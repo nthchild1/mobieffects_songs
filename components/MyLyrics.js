@@ -2,6 +2,11 @@ import React, {useState, useEffect} from 'react';
 import {View, FlatList, StyleSheet, Text, TouchableOpacity} from 'react-native';
 import {readFromAsyncStorage} from '../utils/asyncStorageTools';
 
+/**
+ *
+ * Shows all previously saved lyrics in AsyncStorage
+ * @author @TKY2048
+ */
 const MyLyrics = props => {
   const [myLyrics, setMyLyrics] = useState([]);
 
